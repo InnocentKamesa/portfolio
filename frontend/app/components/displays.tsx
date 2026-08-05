@@ -2,9 +2,14 @@ import { ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { ComponentType } from "react";
 
-type InfoProps = {
+type SkillProps = {
     title: string;
     value: number;
+}
+
+type InfoProps = {
+    title: string;
+    value: string;
 }
 
 type BadgeProps = {
@@ -34,7 +39,7 @@ export function SectionUnderline() {
     )
 }
 
-export function SkillDisplay({ title, value }: InfoProps) {
+export function SkillDisplay({ title, value }: SkillProps) {
     const [progress, setProgress] = useState<number>(0);
 
     useEffect(() => {
