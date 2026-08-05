@@ -4,7 +4,7 @@ import type { ComponentType } from "react";
 
 type InfoProps = {
     title: string;
-    value: string;
+    value: number;
 }
 
 type BadgeProps = {
@@ -35,7 +35,7 @@ export function SectionUnderline() {
 }
 
 export function SkillDisplay({ title, value }: InfoProps) {
-    const [progress, setProgress] = useState(0);
+    const [progress, setProgress] = useState<number>(0);
 
     useEffect(() => {
         const timer = setTimeout(() => {
