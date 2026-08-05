@@ -1,7 +1,18 @@
 import { ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import type { ComponentType } from "react";
 
-export function InfoDisplay({ title, value }) {
+type InfoProps = {
+    title: string;
+    value: string;
+}
+
+type BadgeProps = {
+    title:string;
+    Logo: ComponentType<{ className?: string }>;
+}
+
+export function InfoDisplay({ title, value }: InfoProps) {
     return (
         <div className="flex flex-row gap-2">
             <ChevronRight className="w-4 h-4" />
@@ -23,16 +34,16 @@ export function SectionUnderline() {
     )
 }
 
-export function SkillDisplay({ title, value }) {
+export function SkillDisplay({ title, value }: InfoProps) {
     const [progress, setProgress] = useState(0);
 
-      useEffect(() => {
-    const timer = setTimeout(() => {
-      setProgress(value);
-    }, 400);
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setProgress(value);
+        }, 400);
 
-    return () => clearTimeout(timer);
-  }, [value]);
+        return () => clearTimeout(timer);
+    }, [value]);
 
 
     return (
@@ -47,7 +58,7 @@ export function SkillDisplay({ title, value }) {
     )
 }
 
-export function Badge({ title, Logo }) {
+export function Badge({ title, Logo }: BadgeProps) {
     return (
         <div className="rounded-md shadow-sm badge bg-gray-100 border-zinc-100 text-black/80  p-3 flex flex-row gap-1 items-center">
             <Logo className="w-4 h-4" />
