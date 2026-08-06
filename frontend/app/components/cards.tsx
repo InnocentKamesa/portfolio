@@ -1,6 +1,12 @@
 import { Badge } from "./displays";
 import { ExternalLink } from "lucide-react";
 import type { ComponentType } from "react";
+import type { IconType } from "react-icons";
+
+type Badge = {
+    title: string;
+    logo: IconType;
+};
 
 type ServiceCardProps = {
   title: string;
@@ -12,7 +18,7 @@ type ProjectCardProps = {
   title: string;
   image: string;
   description: string;
-  badges: string[];
+  badges: Badge[];
 }
 
 export function ProjectCard({ image, title, description, badges }: ProjectCardProps) {
