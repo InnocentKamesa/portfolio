@@ -9,7 +9,7 @@ type SkillProps = {
 
 type InfoProps = {
     title: string;
-    value: number;
+    value: string;
 }
 
 type BadgeProps = {
@@ -39,7 +39,7 @@ export function SectionUnderline() {
     )
 }
 
-export function SkillDisplay({ title, value }: InfoProps) {
+export function SkillDisplay({ title, value }: SkillProps) {
     const [progress, setProgress] = useState<number>(0);
 
     useEffect(() => {
