@@ -5,6 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Innocent Kamesa",
   description: "This is my personal portfolio",
+  viewport: "width=device-width, initial-scale=1",
 };
 
 export default function RootLayout({
@@ -15,7 +16,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-
     >
       <body className="bg-white text-black min-h-full flex flex-col">
         <div className="drawer">
