@@ -6,8 +6,14 @@ import { InfoDisplay, SectionUnderline, SkillDisplay } from "../components/displ
 import { useEffect, useRef } from 'react';
 import Typed from 'typed.js';
 import { motion } from "framer-motion";
-import { FaLinkedin, FaInstagram, FaWhatsapp, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
+import { SiTypescript, SiTailwindcss, SiExpress, SiNextdotjs, SiPostgresql } from "react-icons/si";
+import type { IconType } from "react-icons";
 
+type Badge = {
+    title: string;
+    logo: IconType;
+};
 
 export default function HomePage() {
     const el = useRef<HTMLSpanElement>(null);
@@ -24,10 +30,23 @@ export default function HomePage() {
         };
     }, []);
 
+    const portfolioBatches: Badge[] = [
+        { title: "Next.js", logo: SiNextdotjs },
+        { title: "TypeScript", logo: SiTypescript },
+    ];
+
+    const userManagementBatches: Badge[] = [
+        { title: "Next.js", logo: SiNextdotjs },
+        { title: "TypeScript", logo: SiTypescript },
+        { title: "Express", logo: SiExpress },
+        { title: "PostgreSQL", logo: SiPostgresql },
+        { title: "Tailwind CSS", logo: SiTailwindcss },
+    ];
+
     return (
         <div className="px-4 flex flex-col gap-15 text-black/80">
             {/**Hero */}
-            <motion.div
+            <motion.div id="hero"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -42,22 +61,22 @@ export default function HomePage() {
 
                     {/**socials */}
                     <div className="flex flex-row gap-4">
-                        <FaLinkedin className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" />
-                        <FaEnvelope className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" />
-                        <FaInstagram className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" />
-                        <FaWhatsapp className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" />
+                        <a href="https://www.linkedin.com/in/innocent-kamesa-0169353b5"><FaLinkedin className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
+                        <a href="mailto:innocentkamesa05@gmail.com"><FaEnvelope className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
+                        <a href="https://github.com/InnocentKamesa"><FaGithub className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
+                        <a href="https://wa.me/265983759420"><FaWhatsapp className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
                     </div>
 
                     <p className="">A computer science student with strong foundation in software development</p>
-                    <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</button>
-                    <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
+                    <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
+                    <button onClick={() => { window.location.href = "/files/Computer Science general resume.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">View Resume</button>
 
                 </div>
                 <img src="/innocent.jpg" alt="portrait" className="w-sm md:w-md md:ml-auto rounded-md my-4" />
             </motion.div>
 
             {/**About */}
-            <motion.div
+            <motion.div id="about"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -69,7 +88,7 @@ export default function HomePage() {
                     <p className="font-bold mx-auto text-4xl my-4">ABOUT</p>
                     <SectionUnderline />
                 </div>
-                <p className="text-md mx-auto my-4">Iam a forth computer science student at LUANAR with a strong foundation in systems development particularly web applications. I have dedicated myself to exploring different tools and technologies to develop scalable and secure web systems.</p>
+                <p className="text-md mx-auto my-4">Iam a passionate and self-driven individual with a strong interest in systems development. I have dedicated myself to exploring different tools and technologies to develop scalable and secure web systems.</p>
                 <div className="w-full flex flex-col md:flex-row gap-6">
 
                     {/**image */}
@@ -79,16 +98,13 @@ export default function HomePage() {
 
                     {/**info */}
                     <div className="flex flex-2 flex-col gap-4 p-2">
-                        <p className="text-3xl font-semibold">Computer Science student</p>
-                        <p className="text-md">Iam a final year computer science student at LUANAR. The institution has laid very important groundwork for my journey by sharpening my mind through relevant coursework like Data structures and algorithms, software engineering e.t.c. This makes me certain that iam fit to work in various roles like ICT roles, cybersecurity and Software Engineering.</p>
+                        <p className="text-3xl font-semibold">Computer Science</p>
+                        <p className="text-md">Iam currently in the final year doing computer science at LUANAR. The institution has laid very important groundwork for my journey by sharpening my mind through relevant coursework like Data structures and algorithms, software engineering e.t.c. This makes me certain that iam fit to work in various roles like ICT roles, cybersecurity and Software Engineering.</p>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                            <InfoDisplay title="Birth" value="7 May 2006" />
-                            <InfoDisplay title="Age" value="20" />
-                            <InfoDisplay title="Degree" value="Bsc In Applied Computer Science" />
-                            <InfoDisplay title="Email" value="innocentkamesa05@gmail.com" />
-                            <InfoDisplay title="Phone" value="+265 98 375 9420" />
+                            <InfoDisplay title="Birth" value="7 May" />
                             <InfoDisplay title="City" value="Lilongwe" />
+                            <InfoDisplay title="Degree" value="Bsc In Applied Computer Science" />
                             <InfoDisplay title="Availability" value="Open to Work Immediately" />
                             <InfoDisplay title="Freelance" value="Available" />
                         </div>
@@ -101,10 +117,10 @@ export default function HomePage() {
             </motion.div>
 
             {/**skills */}
-            <motion.div
+            <motion.div id="skills"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col gap-6 items-center w-full">
                 <div className="flex flex-col items-center">
                     <p className="text-4xl font-bold mx-auto my-4">SKILLS</p>
@@ -125,7 +141,7 @@ export default function HomePage() {
             </motion.div>
 
             {/**Projects */}
-            <motion.div
+            <motion.div id="projects"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -135,14 +151,23 @@ export default function HomePage() {
                     <SectionUnderline />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 my-4 md:max-w-[90%] mx-auto w-full gap-10">
-                    <ProjectCard />
-                    <ProjectCard />
-                    <ProjectCard />
+                    <ProjectCard
+                        image="/user management placeholder.png"
+                        title="Secure user management system"
+                        description="A web based user management system designed to securely store and manage user data"
+                        badges={userManagementBatches}
+                    />
+                    <ProjectCard
+                        image="/portfolio cover.png"
+                        title="Personal portfolio"
+                        description="A web based mobile-first responsive minimalist portfolio implementation"
+                        badges={portfolioBatches}
+                    />
                 </div>
             </motion.div>
 
             {/**Services */}
-            <motion.div
+            <motion.div id="services"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -160,7 +185,7 @@ export default function HomePage() {
             </motion.div>
 
             {/**Contact */}
-            <motion.div
+            <motion.div id="contact"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -168,26 +193,43 @@ export default function HomePage() {
                 <div className="flex flex-col items-center my-6">
                     <p className="text-4xl font-bold mx-auto my-4">CONTACT</p>
                     <SectionUnderline />
-                    <p className="text-sm mx-auto my-4">Fill in the form below to contact me</p>
+                    <p className="text-sm mx-auto my-4">View contact info or fill a contact form</p>
                 </div>
-                <form className="flex flex-col gap-4 md:max-w-[70%] mx-auto w-full p-4">
-                    <div className="flex flex-col gap-4 md:flex-row w-full justify-between">
+                <div className="flex flex-col md:flex-row gap-4 md:max-w-[90%] mx-auto w-full">
+                    <div className="flex-1 flex flex-col gap-4 p-4 bg-gray-100 rounded-md">
+                        <p className="text-lg font-semibold">Contact Info</p>
+                        <p className="text-sm">Feel free to reach out to me through any of the following channels:</p>
+                        <div className="flex flex-col gap-2">
+                            <div className="flex flex-row gap-2 items-center">
+                                <FaEnvelope className="w-6 h-6" />
+                                <p>innocentkamesa05@gmail.com</p>
+                            </div>
+                            <div className="flex flex-row gap-2 items-center">
+                                <FaPhone className="w-6 h-6" />
+                                <p>+265 983 75 94 20</p>
+                            </div>
+                        </div>
+                        <form className="flex flex-col gap-4 md:max-w-[70%] mx-auto w-full p-4">
+                            <p className="font-bold mx-auto text-lg">Contact Form</p>
+                            <div className="flex flex-col gap-4 md:flex-row w-full justify-between">
+                                {/*name */}
+                                <input type="text" placeholder="Your name" className="flex-1 border bg-white border-gray-200 p-3" />
 
-                        {/*name */}
-                        <input type="text" placeholder="Your name" className="flex-1 border border-gray-200 p-3" />
+                                {/**email */}
+                                <input type="email" placeholder="Your email" className="flex-1 border bg-white border-gray-200 p-3" required />
+                            </div>
 
-                        {/**email */}
-                        <input type="email" placeholder="mail@site.com" className="flex-1 border border-gray-200 p-3" required />
+                            {/**subject */}
+                            <input type="text" placeholder="Subject" className="p-3 border border-gray-200 w-full bg-white" />
+
+                            {/**message */}
+                            <textarea className="textarea bg-white w-full border border-gray-200" placeholder="Your message"></textarea>
+
+                            <button className="btn btn-neutral btn-sm w-30 rounded-2xl self-center px-2 py-4">Send Message</button>
+                        </form>
                     </div>
+                </div>
 
-                    {/**subject */}
-                    <input type="text" placeholder="Subject" className="p-3 border border-gray-200 w-full" />
-
-                    {/**message */}
-                    <textarea className="textarea bg-gray-50 w-full border border-gray-200" placeholder="Your message"></textarea>
-
-                    <button className="btn btn-neutral btn-sm w-30 rounded-2xl self-center px-2 py-4">Send Message</button>
-                </form>
 
             </motion.div>
 
@@ -195,46 +237,16 @@ export default function HomePage() {
             {/**Footer */}
             <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-6">
                 <nav className="grid grid-flow-col gap-4">
-                    <a className="link link-hover">About me</a>
-                    <a className="link link-hover">Contact</a>
-                    <a className="link link-hover">Projects</a>
+                    <a href="#about" className="link link-hover">About me</a>
+                    <a href="#skills" className="link link-hover">Skills</a>
+                    <a href="#projects" className="link link-hover">Projects</a>
                 </nav>
                 <nav>
                     <div className="grid grid-flow-col gap-4">
-
-                        <a>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-                            </svg>
-                        </a>
-                        <a>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                className="fill-current">
-                                <path
-                                    d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"></path>
-                            </svg>
-                        </a>
+                        <a href="https://www.linkedin.com/in/innocent-kamesa-0169353b5"><FaLinkedin className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
+                        <a href="mailto:innocentkamesa05@gmail.com"><FaEnvelope className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
+                        <a href="https://github.com/InnocentKamesa"><FaGithub className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
+                        <a href="https://wa.me/265983759420"><FaWhatsapp className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
                     </div>
                 </nav>
                 <aside>
