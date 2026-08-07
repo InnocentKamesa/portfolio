@@ -2,8 +2,8 @@
 
 import { Badge, Wrench, Terminal, ChartLine } from "lucide-react";
 import { ProjectCard, ServiceCard } from "../components/cards";
-import { InfoDisplay, SectionUnderline, SkillDisplay } from "../components/displays";
-import { useEffect, useRef } from 'react';
+import { InfoDisplay, SectionUnderline, SkillDisplay, Spinner } from "../components/displays";
+import { useEffect, useRef, useState } from 'react';
 import Typed from 'typed.js';
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaWhatsapp, FaEnvelope, FaPhone } from 'react-icons/fa';
@@ -16,11 +16,16 @@ type Badge = {
 };
 
 export default function HomePage() {
-    const el = useRef<HTMLSpanElement>(null);
+    const el = useRef<HTMLSpanElement | null>(null);
+    const [loading, setLoading] = useState(false);
+
 
     useEffect(() => {
+        if (!el.current) return;
+
+
         const typed = new Typed(el.current, {
-            strings: ['Full-Stack Developer', 'UI/UX Enthusiast', 'Data Science Enthusiast'],
+            strings: ['Full-Stack Developer', 'Data Scientist', 'CyberSecurity Specialist',],
             typeSpeed: 100,
             backSpeed: 50,
             loop: true,
@@ -44,9 +49,11 @@ export default function HomePage() {
     ];
 
     return (
-        <div className="px-4 flex flex-col gap-15 text-black/80">
+        <div className="px-4 flex flex-col gap-15 items-center text-black/80">
+
             {/**Hero */}
             <motion.div id="hero"
+
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -69,7 +76,7 @@ export default function HomePage() {
 
                     <p className="">A computer science student with strong foundation in software development</p>
                     <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
-                    <button onClick={() => { window.location.href = "/files/Computer Science general resume.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">View Resume</button>
+                    <button onClick={() => { window.location.href = "/files/Computer Science general resume.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
 
                 </div>
                 <img src="/innocent.jpg" alt="portrait" className="w-sm md:w-md md:ml-auto rounded-md my-4" />
@@ -88,60 +95,89 @@ export default function HomePage() {
                     <p className="font-bold mx-auto text-4xl my-4">ABOUT</p>
                     <SectionUnderline />
                 </div>
-                <p className="text-md mx-auto my-4">Iam a passionate and self-driven individual with a strong interest in systems development. I have dedicated myself to exploring different tools and technologies to develop scalable and secure web systems.</p>
-                <div className="w-full flex flex-col md:flex-row gap-6">
 
-                    {/**image */}
-                    <div className="flex-1 flex items-center">
-                        <img src="/innocent2.jpg" alt="portrait" className="mx-auto w-sm md:w-sm md:h-sm md:ml-auto rounded-md" />
-                    </div>
+                <div className="flex flex-col gap-4 md:max-w-[80%] mx-auto w-full">
+                    <p>I’m an Applied Computer Science student and aspiring Full-Stack Developer
+                        with a strong interest in building practical, scalable, and user-focused
+                        software solutions. I work across the frontend and backend, with experience using
+                        technologies such as React, Next.js, TypeScript, Node.js, Express, PostgreSQL,
+                        and modern UI frameworks. I enjoy turning ideas into functional applications while
+                        paying attention to clean architecture, intuitive user experiences, reliable APIs,
+                        and maintainable code.
+                    </p>
 
-                    {/**info */}
-                    <div className="flex flex-2 flex-col gap-4 p-2">
-                        <p className="text-3xl font-semibold">Computer Science</p>
-                        <p className="text-md">Iam currently in the final year doing computer science at LUANAR. The institution has laid very important groundwork for my journey by sharpening my mind through relevant coursework like Data structures and algorithms, software engineering e.t.c. This makes me certain that iam fit to work in various roles like ICT roles, cybersecurity and Software Engineering.</p>
+                    <p>
+                        Beyond software development, I’m also developing my skills in Data Science,
+                        Machine Learning, Artificial Intelligence, and Cybersecurity.
+                        I’m particularly interested in using data to uncover insights,
+                        building intelligent systems, and understanding how software and
+                        systems can be designed and secured against real-world threats.
+                        Through academic work, personal projects, and continuous learning,
+                        I’m building a broad technical foundation while seeking opportunities
+                        to gain practical industry experience and contribute to meaningful technology
+                        solutions.
+                    </p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
-                            <InfoDisplay title="Birth" value="7 May" />
-                            <InfoDisplay title="City" value="Lilongwe" />
-                            <InfoDisplay title="Degree" value="Bsc In Applied Computer Science" />
-                            <InfoDisplay title="Availability" value="Open to Work Immediately" />
-                            <InfoDisplay title="Freelance" value="Available" />
-                        </div>
-                        <p>I am actively seeking opportunities to grow as a software developer, gain practical industry experience, and contribute to meaningful projects. I am particularly interested in internships, industrial attachments, junior developer roles, and collaborative opportunities where I can apply my skills, learn from experienced professionals, and continue developing as a full-stack developer.
-                        </p>
-                    </div>
                 </div>
 
-
-            </motion.div>
+            </motion.div >
 
             {/**skills */}
-            <motion.div id="skills"
-                initial={{ opacity: 0, y: 50 }}
+            < motion.div id="skills"
+                initial={{ opacity: 0, y: 50 }
+                }
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col gap-6 items-center w-full">
+                transition={{ duration: 0.8, ease: "easeOut" }} className="flex flex-col gap-6 items-center w-full" >
                 <div className="flex flex-col items-center">
                     <p className="text-4xl font-bold mx-auto my-4">SKILLS</p>
                     <SectionUnderline />
                     <p className=" text-sm mx-auto my-4">A brief showcase of my skills</p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 w-full px-10 md:px-20">
-                    <SkillDisplay title="Python" value={80} />
-                    <SkillDisplay title="JavaScript" value={90} />
-                    <SkillDisplay title="Java" value={50} />
-                    <SkillDisplay title="HTML & CSS" value={100} />
-                    <SkillDisplay title="Django" value={70} />
-                    <SkillDisplay title="Express.js" value={80} />
-                    <SkillDisplay title="Next.js" value={70} />
-                    <SkillDisplay title="TypeScript" value={60} />
-                    <SkillDisplay title="Tailwindcss" value={90} />
+
+                {/* name of each tab group should be unique */}
+                <div className="tabs tabs-border text-black">
+                    <input type="radio" name="skills" className="tab text-black" aria-label="Data Analysis" />
+                    <div className="tab-content border-base-300 p-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 w-full px-10 md:px-20">
+                            <SkillDisplay title="Python" value={90} />
+                            <SkillDisplay title="R" value={60} />
+                            <SkillDisplay title="Machine Learning" value={90} />
+                            <SkillDisplay title="Data visualization" value={60} />
+                            <SkillDisplay title="SQL" value={100} />
+                        </div>
+                    </div>
+
+                    <input type="radio" name="skills" className="tab text-black" aria-label="Full Stack" defaultChecked />
+                    <div className="tab-content border-base-300 p-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 w-full px-10 md:px-20">
+                            <SkillDisplay title="Python" value={80} />
+                            <SkillDisplay title="JavaScript" value={90} />
+                            <SkillDisplay title="Java" value={50} />
+                            <SkillDisplay title="HTML & CSS" value={100} />
+                            <SkillDisplay title="Django" value={70} />
+                            <SkillDisplay title="Express.js" value={80} />
+                            <SkillDisplay title="Next.js" value={70} />
+                            <SkillDisplay title="TypeScript" value={60} />
+                            <SkillDisplay title="Tailwindcss" value={90} />
+                        </div>
+                    </div>
+
+                    <input type="radio" name="skills" className="tab text-black" aria-label="CyberSecurity" />
+                    <div className="tab-content border-base-300 p-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4 w-full px-10 md:px-20">
+                            <SkillDisplay title="CyberSecurity fundamentals" value={80} />
+                            <SkillDisplay title="Encryption" value={80} />
+                            <SkillDisplay title="Advanced Systems Security" value={80} />
+                            <SkillDisplay title="JWT authentication" value={90} />
+                        </div>
+                    </div>
                 </div>
-            </motion.div>
+
+            </motion.div >
 
             {/**Projects */}
-            <motion.div id="projects"
+            < motion.div id="projects"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -164,10 +200,10 @@ export default function HomePage() {
                         badges={portfolioBatches}
                     />
                 </div>
-            </motion.div>
+            </motion.div >
 
             {/**Services */}
-            <motion.div id="services"
+            < motion.div id="services"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -182,36 +218,46 @@ export default function HomePage() {
                     <ServiceCard title="Data Analytics" description="Iam also capable of analysing data to understand patterns thhhat can help with decision making and business growth." Logo={ChartLine} />
                 </div>
 
-            </motion.div>
+            </motion.div >
 
             {/**Contact */}
-            <motion.div id="contact"
+            < motion.div id="contact"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}>
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="md:w-[90%]">
                 <div className="flex flex-col items-center my-6">
                     <p className="text-4xl font-bold mx-auto my-4">CONTACT</p>
                     <SectionUnderline />
-                    <p className="text-sm mx-auto my-4">View contact info or fill a contact form</p>
+                    <p className="text-sm mx-auto my-4">Let's Connect</p>
                 </div>
                 <div className="flex flex-col md:flex-row gap-4 md:max-w-[90%] mx-auto w-full">
                     <div className="flex-1 flex flex-col gap-4 p-4 bg-gray-100 rounded-md">
                         <p className="text-lg font-semibold">Contact Info</p>
                         <p className="text-sm">Feel free to reach out to me through any of the following channels:</p>
                         <div className="flex flex-col gap-2">
-                            <div className="flex flex-row gap-2 items-center">
+
+                            {/**email */}
+                            <div className="flex flex-row gap-3 items-center">
                                 <FaEnvelope className="w-6 h-6" />
                                 <p>innocentkamesa05@gmail.com</p>
                             </div>
-                            <div className="flex flex-row gap-2 items-center">
+                            {/**phone */}
+                            <div className="flex flex-row gap-3 items-center">
                                 <FaPhone className="w-6 h-6" />
                                 <p>+265 983 75 94 20</p>
+                            </div>
+
+                            {/**linkedin*/}
+                            <div className="flex flex-row gap-3 items-center">
+                                <FaLinkedin className="w-6 h-6" />
+                                <p>https://www.linkedin.com/in/innocent-kamesa-0169353b5</p>
                             </div>
                         </div>
                         <form className="flex flex-col gap-4 md:max-w-[70%] mx-auto w-full p-4">
                             <p className="font-bold mx-auto text-lg">Contact Form</p>
-                            <div className="flex flex-col gap-4 md:flex-row w-full justify-between">
+                            <div className="flex flex-col gap-4 justify-between">
                                 {/*name */}
                                 <input type="text" placeholder="Your name" className="flex-1 border bg-white border-gray-200 p-3" />
 
@@ -231,11 +277,11 @@ export default function HomePage() {
                 </div>
 
 
-            </motion.div>
+            </motion.div >
 
 
             {/**Footer */}
-            <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-6">
+            < footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-6" >
                 <nav className="grid grid-flow-col gap-4">
                     <a href="#about" className="link link-hover">About me</a>
                     <a href="#skills" className="link link-hover">Skills</a>
@@ -252,7 +298,7 @@ export default function HomePage() {
                 <aside>
                     <p>Copyright © {new Date().getFullYear()} - All right reserved by Innocent Kamesa</p>
                 </aside>
-            </footer>
+            </footer >
         </div >
     )
 }

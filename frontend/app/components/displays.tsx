@@ -1,3 +1,5 @@
+"use client";
+
 import { ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { ComponentType } from "react";
@@ -70,4 +72,42 @@ export function Badge({ title, Logo }: BadgeProps) {
             <p className="text-sm">{title}</p>
         </div>
     )
+}
+
+export function Spinner() {
+    return (
+        <div className="flex flex-col items-center justify-center gap-2">
+            <span className="loading loading-dots loading-lg"></span>
+            <p className="text-md text-black/80">Loading...</p>
+        </div>
+    )
+}
+
+export function ScrollProgress() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const documentHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+
+      const percentage = (scrollTop / documentHeight) * 100;
+
+      setProgress(percentage);
+    };
+
+    window.addEventListener("scroll", updateProgress);
+
+    return () => window.removeEventListener("scroll", updateProgress);
+  }, []);
+
+  return (
+    <div className="fixed bottom-10 right-10 z-50 h-1 w-full text-black rounded-full">
+      <div
+        className="h-full bg-primary transition-all duration-100"
+        style={{ width: `${progress}%` }}
+      />
+    </div>
+  );
 }
