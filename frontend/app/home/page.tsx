@@ -76,7 +76,7 @@ export default function HomePage() {
 
                     <p className="">A computer science student with strong foundation in software development</p>
                     <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
-                    <button onClick={() => { window.location.href = "/files/Computer Science general resume.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
+                    <button onClick={() => { window.location.href = "/files/Innocent kamesa resume v1.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
 
                 </div>
                 <img src="/innocent.jpg" alt="portrait" className="w-sm md:w-md md:ml-auto rounded-md my-4" />
