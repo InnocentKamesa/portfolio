@@ -78,6 +78,7 @@ export default function HomePage() {
                     <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
                     <button onClick={() => { window.location.href = "/files/Innocent kamesa resume v1.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
 
+
                 </div>
                 <img src="/innocent.jpg" alt="portrait" className="w-sm md:w-md md:ml-auto rounded-md my-4" />
             </motion.div>
@@ -178,6 +179,7 @@ export default function HomePage() {
 
             {/**Projects */}
             < motion.div id="projects"
+
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -207,12 +209,14 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}>
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="flex flex-col items-center"
+                >
                 <div className="flex flex-col items-center my-6">
                     <p className="text-4xl font-bold mx-auto my-4">SERVICES</p>
                     <SectionUnderline />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 my-4 md:max-w-[90%] mx-auto w-full gap-10">
+                <div className="grid grid-cols-1 md:grid-cols-3 my-4 mx-auto w-full gap-10">
                     <ServiceCard title="Custom Web Development" description="I develop scalable and secure web applications using modern technologies. I am passionate about creating user-friendly interfaces and seamless user experiences." Logo={Terminal} />
                     <ServiceCard title="IT support" description="I can offer ICT support work to help with system diagnosis, maintainance and management of IT systems." Logo={Wrench} />
                     <ServiceCard title="Data Analytics" description="Iam also capable of analysing data to understand patterns thhhat can help with decision making and business growth." Logo={ChartLine} />

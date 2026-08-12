@@ -59,7 +59,7 @@ export function ProjectCard({ image, title, description, badges }: ProjectCardPr
 export function ServiceCard({ title, description, Logo }: ServiceCardProps) {
 
   return (
-    <div className="card w-96  hover:bg-zinc-100 hover:shadow-lg transition-all duration-300 ease-in-out ">
+    <div className="card w-96 bg-gray-100 shadow-lg  hover:bg-gray-200 hover:shadow-2xl transition-all duration-300 ease-in-out ">
       <figure>
         <Logo className="w-16 h-16 mx-auto my-6" />
       </figure>
