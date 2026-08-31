@@ -74,7 +74,7 @@ export default function HomePage() {
                         <a href="https://wa.me/265983759420"><FaWhatsapp className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
                     </div>
 
-                    <p className="">A computer science student with strong foundation in software development</p>
+                    <p className="">Building scalable, secure systems in Finance, Healthcare, Education and Agriculture</p>
                     <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
                     <button onClick={() => { window.location.href = "/files/Innocent kamesa resume v1.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
 
@@ -189,12 +189,15 @@ export default function HomePage() {
                     <SectionUnderline />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 my-4 md:max-w-[90%] mx-auto w-full gap-10">
+
+          {/*
                     <ProjectCard
                         image="/user management placeholder.png"
                         title="Secure user management system"
                         description="A web based user management system designed to securely store and manage user data"
                         badges={userManagementBatches}
                     />
+          */}
                     <ProjectCard
                         image="/portfolio cover.png"
                         title="Personal portfolio"
