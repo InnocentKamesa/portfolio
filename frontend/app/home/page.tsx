@@ -74,7 +74,7 @@ export default function HomePage() {
                         <a href="https://wa.me/265983759420"><FaWhatsapp className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
                     </div>
 
-                    <p className="">Building scalable, secure systems in Finance, Healthcare, Education and Agriculture</p>
+                    <p className="">Building scalable, mobile first responsive web and mobile applications with modern technologies.</p>
                     <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
                     <button onClick={() => { window.location.href = "/files/Innocent kamesa resume v1.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
 
@@ -98,8 +98,8 @@ export default function HomePage() {
                 </div>
 
                 <div className="flex flex-col gap-4 md:max-w-[80%] mx-auto w-full">
-                    <p>I’m an Applied Computer Science student and aspiring Full-Stack Developer
-                        with a strong interest in building practical, scalable, and user-focused
+                    <p>I’m an Applied Computer Science student and Full-Stack Developer
+                        with a strong enthusiasm in building practical, scalable, and user-focused
                         software solutions. I work across the frontend and backend, with experience using
                         technologies such as React, Next.js, TypeScript, Node.js, Express, PostgreSQL,
                         and modern UI frameworks. I enjoy turning ideas into functional applications while
