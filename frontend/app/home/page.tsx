@@ -64,7 +64,7 @@ export default function HomePage() {
                         <Badge className="w-4 h-4 bg-green-500 rounded-full" />
                         <p>Open to work</p>
                     </div>
-                  <img src="/innocent.jpg" alt="portrait" className="w-sm h-sm mx-auto rounded-full my-4 md:hidden" />
+                    <p className="text-2xl font-bold my-3">Hello, I'm <span className="block text-5xl my-2">Innocent Kamesa</span><span ref={el} className="text-2xl"></span></p>
 
                     {/**socials */}
                     <div className="flex flex-row gap-4">
@@ -74,7 +74,7 @@ export default function HomePage() {
                         <a href="https://wa.me/265983759420"><FaWhatsapp className="w-6 h-6 hover:text-blue-600 transition-all duration-300 ease-in-out" /></a>
                     </div>
 
-                    <p className="">Building scalable, mobile first responsive web and mobile applications with modern technologies.</p>
+                    <p className="">Building scalable, web and mobile applications with modern technologies.</p>
                     <a href="#projects" className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl btn-neutral rounded-full p-4">View Projects</a>
                     <button onClick={() => { window.location.href = "/files/Innocent kamesa resume v1.pdf" }} className="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl bg-gray-200 text-black rounded-full p-4">Download Resume</button>
 
