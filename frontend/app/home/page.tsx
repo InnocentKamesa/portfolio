@@ -64,7 +64,7 @@ export default function HomePage() {
                         <Badge className="w-4 h-4 bg-green-500 rounded-full" />
                         <p>Open to work</p>
                     </div>
-                    <p className="text-2xl font-bold my-3">Hello, I'm <span className="block text-5xl my-2">Innocent Kamesa</span><span ref={el} className="text-2xl"></span></p>
+                  <img src="/innocent.jpg" alt="portrait" className="w-sm h-sm mx-auto rounded-full my-4 md:hidden" />
 
                     {/**socials */}
                     <div className="flex flex-row gap-4">
@@ -80,7 +80,7 @@ export default function HomePage() {
 
 
                 </div>
-                <img src="/innocent.jpg" alt="portrait" className="w-sm md:w-md md:ml-auto rounded-md my-4" />
+                <img src="/innocent.jpg" alt="portrait" className="w-sm md:w-md md:ml-auto rounded-md my-4 sm:hidden" />
             </motion.div>
 
             {/**About */}
